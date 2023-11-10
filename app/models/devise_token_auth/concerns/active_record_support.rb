@@ -2,7 +2,7 @@ module DeviseTokenAuth::Concerns::ActiveRecordSupport
   extend ActiveSupport::Concern
 
   included do
-    if Rails::VERSION::MAJOR >= 7 && Rails::VERSION::MINOR >= 1
+    if Gem::Version.new(Rails::VERSION::STRING) >= '7.1'
       serialize :tokens, coder: DeviseTokenAuth::Concerns::TokensSerialization
     else
       serialize :tokens, DeviseTokenAuth::Concerns::TokensSerialization
